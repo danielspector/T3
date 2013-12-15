@@ -42,26 +42,26 @@ class Game
 		return move >=0 && move <=8 && @board[move] == nil
 	end
 
+	# This matches up the @board array containing the game board with the @winners array containing the winning sets.
+	# Uses boolean logic to pass 'messages' to the other parts of the code
 	def check_win
 		done = true
 
 		for set in @winners
-			# print set, "\n"
-			allx = true
-			allo = true
+			all_x = true
+			all_o = true
 			for spot in set
-				# print "spot is: #{spot}, corresponding board element is #{@board[spot]}\n" 
 				if @board[spot] != "x"
-					allx = false
+					all_x = false
 				end
 
 				if @board[spot] != 'o'
-					allo = false
+					all_o = false
 				end
 			end
-			if allx
+			if all_x
 				return 'x'
-			elsif allo
+			elsif all_o
 				return 'o'
 			end
 		end
@@ -129,8 +129,13 @@ end
 
 g = Game.new
 
+puts ""
+puts "Welcome to Flatiron Tic Tac Toe!"
+puts "You can select a position on the board by entering the number."
+puts "The board is numbered 0 to 8, starting from the top left and moving horizontally"
+puts "X always goes first"
 puts "Do you want to go first (y/n)"
-first = gets.chomp
+first = gets.chomp.downcase
 g.game_board
 
 turn = false
@@ -163,6 +168,12 @@ end
 
 if game_over == 'draw'
 	puts 'Draw!'
+	puts "To play again, just run the file"
+	puts "Hope to see you soon!"
+	puts ""
 else
 puts game_over.upcase + ' Wins!'
+puts "To play again, just run the file"
+puts "Hope to see you soon!"
+puts ""
 end

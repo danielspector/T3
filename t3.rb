@@ -7,13 +7,13 @@ class Game
 		@computer
 		@board = Array.new(9)
 		@winners = [[0,1,2],
-					[3,4,5],
-					[6,7,8],
-					[0,3,6],
-					[1,4,7],
-					[2,5,8],
-					[0,4,8],
-					[2,4,6]
+								[3,4,5],
+								[6,7,8],
+								[0,3,6],
+								[1,4,7],
+								[2,5,8],
+								[0,4,8],
+								[2,4,6]
 					]
 	end
 
@@ -116,8 +116,8 @@ class Game
 			end
 		end
 
-		# otherwise pick a random move
-		move = rand(0..8)
+		# Choose the center if available. If its not, choose a random move
+		move = 4
 		while !valid_move(move)
 			move = rand(0..8)
 		end
